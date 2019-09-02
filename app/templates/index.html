@@ -9,7 +9,25 @@
 </head>
 <body>
     <div class="temp">
-        Temp{{ temp }}
+        Temp: <div id="content">t</div>  
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>  
+        function show()  
+        {  
+            $.ajax({  
+                url: "/temp",  
+                cache: false,  
+                success: function(html){  
+                    $("#content").html(html);  
+                }  
+            });  
+        }  
+    
+        $(document).ready(function(){  
+            show();  
+            setInterval('show()', 600000);  
+        });  
+    </script>
 </body>
 </html>
